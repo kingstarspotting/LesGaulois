@@ -3,10 +3,12 @@ package personnages;
 import java.util.Random;
 
 public class Druide {
+	private static final int FORCE_POTION = 7;
 	private String nom;
 	private int effetPotionMin;
 	private int effetPotionMax;
 	private int forcePotion = 1;
+	private Random random = new Random();
 	
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
@@ -25,22 +27,21 @@ public class Druide {
 		return "Le druide " + nom + " : ";
 	}
 	
-	public int preparerPotion() {
-		Random random = new Random();
-		int force = random.nextInt(effetPotionMin, effetPotionMax);
-		if (force > 7) {
-			parler("J'ai préparé une super potion de force " + force);
-			return force;
+	public void preparerPotion() {
+		forcePotion = random.nextInt(effetPotionMin, effetPotionMax);
+		if (forcePotion > FORCE_POTION) {
+			parler("J'ai préparé une super potion de force " + forcePotion);
 		} else {
-			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + force);
-			return force;
+			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + forcePotion);
 		}
 	}
 	
 	public void booster(Gaulois gaulois) {
-		if (gaulois.getNom() == "Obélix") {
+		if ("Obélix".equals(gaulois.getNom())) {
 			parler("Non, Obélix ! Tu n'auras pas de potion magique !");
-		} 
+		} else {
+			gaulois.boirePotion(forcePotion);
+		}
 	}
 	
 	public static void main(String[] args) {

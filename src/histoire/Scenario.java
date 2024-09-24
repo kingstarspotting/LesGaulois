@@ -15,10 +15,10 @@ public class Scenario {
 		Druide panoramix = new Druide("Panoramix", 5, 10);
 		Gaulois obelix = new Gaulois("Obélix", 25);
 		panoramix.parler("Je vais aller préparer une petite potion...");
-		int forcePotion = panoramix.preparerPotion();
+		panoramix.preparerPotion();
 		panoramix.booster(obelix);
 		obelix.parler("Par Bélénos, ce n'est pas juste!");
-		asterix.boirePotion(forcePotion);
+		panoramix.booster(asterix);
 		asterix.parler("Bonjour");
 		minus.parler("UN GAU... UN GAUGAU...");
 		asterix.frapper(minus);

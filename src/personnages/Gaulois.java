@@ -1,7 +1,5 @@
 package personnages;
 
-import java.util.Iterator;
-
 public class Gaulois {
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -47,8 +45,8 @@ public class Gaulois {
 		System.out.println(asterix);
 		System.out.println(asterix.prendreParole());
 		asterix.parler("Bonjour je suis Astérix");
-		int forcePotion = panoramix.preparerPotion();
-		asterix.boirePotion(forcePotion);
+		panoramix.preparerPotion();
+		asterix.boirePotion(5);
 		asterix.frapper(minus);
 	}
 }
